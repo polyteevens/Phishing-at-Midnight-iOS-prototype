@@ -1,10 +1,12 @@
 import SwiftUI
 
 /// Temporary placeholder Start screen. Per the build brief this is intentionally
-/// bare — no real onboarding. It will grow a NavigationStack destination into
-/// BriefingView once that screen exists.
+/// bare — no real onboarding. Presents TriageView directly for now; BriefingView
+/// will be inserted between Start and Triage once it exists.
 struct StartView: View {
-    @State private var missionComingSoon = false
+    @State private var pool: [Specimen] = []
+    @State private var loadError: String?
+    @State private var isPlaying = false
 
     var body: some View {
         ZStack {
@@ -31,8 +33,16 @@ struct StartView: View {
 
                 Spacer()
 
+                if let loadError {
+                    Text(loadError)
+                        .font(.footnote)
+                        .foregroundStyle(.red)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
+
                 Button {
-                    missionComingSoon = true
+                    isPlaying = true
                 } label: {
                     Text("Begin Shift")
                         .font(.headline)
@@ -42,28 +52,23 @@ struct StartView: View {
                         .foregroundStyle(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
+                .disabled(pool.isEmpty)
                 .padding(.bottom, 48)
             }
             .padding(.horizontal, 24)
-
-            if missionComingSoon {
-                VStack(spacing: 12) {
-                    Text("Mission scaffold in progress")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                    Text("Briefing → Triage → Results are being wired up next.")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(24)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .padding(.horizontal, 40)
-                .transition(.opacity.combined(with: .scale(scale: 0.95)))
-                .onTapGesture { missionComingSoon = false }
+        }
+        .task {
+            do {
+                pool = try SpecimenLoader.loadPool()
+            } catch {
+                loadError = "Couldn't load the specimen pool: \(error.localizedDescription)"
             }
         }
-        .animation(.easeInOut(duration: 0.2), value: missionComingSoon)
+        .fullScreenCover(isPresented: $isPlaying) {
+            TriageView(pool: pool, replayCount: 0) { _ in
+                isPlaying = false
+            }
+        }
     }
 }
 
