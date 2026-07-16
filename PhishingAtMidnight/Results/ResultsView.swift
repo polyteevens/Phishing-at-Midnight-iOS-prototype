@@ -4,7 +4,13 @@ import SwiftUI
 /// a cosmetic skill-unlocked line, and a prominent Replay button — because
 /// chasing a better grade is the retention hook even in this prototype.
 struct ResultsView: View {
+    struct BestStats: Equatable {
+        let grade: TriageEngine.Grade
+        let accuracy: Double
+    }
+
     let result: TriageEngine.RunResult
+    let best: BestStats?
     let onReplay: () -> Void
     let onExit: () -> Void
 
@@ -55,6 +61,12 @@ struct ResultsView: View {
                 .padding(.top, 32)
 
                 GradeBadgeView(grade: result.grade)
+
+                if let best {
+                    Text("Best: \(best.grade.rawValue) · \(Int(best.accuracy.rounded()))% accuracy")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                }
 
                 statGrid
 
@@ -183,6 +195,7 @@ private struct MiniMeterStatView: View {
             outcome: .cleared, grade: .gold, accuracy: 96, speedBonus: 22.5,
             finalBreach: 0, finalDisruption: 5, correctCount: 11, totalDecisions: 11
         ),
+        best: .init(grade: .gold, accuracy: 96),
         onReplay: {}, onExit: {}
     )
     .preferredColorScheme(.dark)
@@ -194,6 +207,7 @@ private struct MiniMeterStatView: View {
             outcome: .breached, grade: .failed, accuracy: 54, speedBonus: 4,
             finalBreach: 100, finalDisruption: 25, correctCount: 6, totalDecisions: 11
         ),
+        best: .init(grade: .silver, accuracy: 78),
         onReplay: {}, onExit: {}
     )
     .preferredColorScheme(.dark)
