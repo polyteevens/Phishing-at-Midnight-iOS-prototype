@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB04A10B703DB58A907307F /* GameConfig.swift */; };
 		BD5064D54E9907252264E20E /* Specimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5DEB591464F9ADCEFFC5C /* Specimen.swift */; };
 		E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */; };
 		B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		E16D97483743F75E92295108 /* PhishingAtMidnight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishingAtMidnight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		2FB04A10B703DB58A907307F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameConfig.swift"; sourceTree = "<group>"; };
 		56F5DEB591464F9ADCEFFC5C /* Specimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Specimen.swift"; sourceTree = "<group>"; };
 		AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecimenLoader.swift"; sourceTree = "<group>"; };
 		81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhishingAtMidnightApp.swift"; sourceTree = "<group>"; };
@@ -36,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5619E268CFFE28118C19FC6A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2FB04A10B703DB58A907307F /* GameConfig.swift */,
+			);
+			path = "Config";
+			sourceTree = "<group>";
+		};
 		7CA548B1171C9820DE76F119 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */,
+				5619E268CFFE28118C19FC6A /* Config */,
 				7CA548B1171C9820DE76F119 /* Content */,
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
 				A024F06580C79B7582C3806A /* Resources */,
@@ -151,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */,
 				BD5064D54E9907252264E20E /* Specimen.swift in Sources */,
 				E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */,
 				B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */,
