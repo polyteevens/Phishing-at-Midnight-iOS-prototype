@@ -1,0 +1,26 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods (unused here, ignored for safety)
+Pods/
+
+# Obj-C/Swift specific
+*.hmap
+
+# macOS
+.DS_Store
+
+# Simulator / device logs
+*.ips
