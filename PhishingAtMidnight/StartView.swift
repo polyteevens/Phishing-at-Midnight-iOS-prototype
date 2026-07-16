@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// Temporary placeholder Start screen. Per the build brief this is intentionally
-/// bare — no real onboarding. Presents TriageView directly for now; BriefingView
-/// will be inserted between Start and Triage once it exists.
+/// bare — no real onboarding. Presents GameFlowView directly for now; BriefingView
+/// will be inserted between Start and the Triage/Results loop once it exists.
 struct StartView: View {
     @State private var pool: [Specimen] = []
     @State private var loadError: String?
@@ -65,7 +65,7 @@ struct StartView: View {
             }
         }
         .fullScreenCover(isPresented: $isPlaying) {
-            TriageView(pool: pool, replayCount: 0) { _ in
+            GameFlowView(pool: pool) {
                 isPlaying = false
             }
         }
