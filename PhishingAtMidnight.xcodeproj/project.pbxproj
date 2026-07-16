@@ -10,6 +10,9 @@
 		FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB04A10B703DB58A907307F /* GameConfig.swift */; };
 		BD5064D54E9907252264E20E /* Specimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5DEB591464F9ADCEFFC5C /* Specimen.swift */; };
 		E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */; };
+		4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */; };
+		9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */; };
+		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
 		B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */; };
 		47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB204A453BFEED23305690 /* StartView.swift */; };
 		8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2ABCDF10DED7C21468BA /* TriageEngine.swift */; };
@@ -23,6 +26,9 @@
 		2FB04A10B703DB58A907307F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameConfig.swift"; sourceTree = "<group>"; };
 		56F5DEB591464F9ADCEFFC5C /* Specimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Specimen.swift"; sourceTree = "<group>"; };
 		AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecimenLoader.swift"; sourceTree = "<group>"; };
+		3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterView.swift"; sourceTree = "<group>"; };
+		E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisruptionMeterView.swift"; sourceTree = "<group>"; };
+		3544A4C03C0F3C9037893E32 /* MeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterBarView.swift"; sourceTree = "<group>"; };
 		81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhishingAtMidnightApp.swift"; sourceTree = "<group>"; };
 		3DCDC87185698C6AF3DDEE31 /* specimens.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "specimens.json"; sourceTree = "<group>"; };
 		5AFB204A453BFEED23305690 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartView.swift"; sourceTree = "<group>"; };
@@ -57,6 +63,16 @@
 			path = "Content";
 			sourceTree = "<group>";
 		};
+		0663F5E7D9DB000022EE2CC6 /* Meters */ = {
+			isa = PBXGroup;
+			children = (
+				3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */,
+				E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */,
+				3544A4C03C0F3C9037893E32 /* MeterBarView.swift */,
+			);
+			path = "Meters";
+			sourceTree = "<group>";
+		};
 		A024F06580C79B7582C3806A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +95,7 @@
 				CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */,
 				5619E268CFFE28118C19FC6A /* Config */,
 				7CA548B1171C9820DE76F119 /* Content */,
+				0663F5E7D9DB000022EE2CC6 /* Meters */,
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
 				A024F06580C79B7582C3806A /* Resources */,
 				5AFB204A453BFEED23305690 /* StartView.swift */,
@@ -176,6 +193,9 @@
 				FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */,
 				BD5064D54E9907252264E20E /* Specimen.swift in Sources */,
 				E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */,
+				4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */,
+				9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */,
+				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
 				B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */,
 				47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */,
 				8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */,
