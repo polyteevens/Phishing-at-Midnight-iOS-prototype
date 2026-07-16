@@ -69,7 +69,7 @@ struct TriageView: View {
                 inboxList
             }
             .padding(16)
-            .background(Color.black.ignoresSafeArea())
+            .background { CinematicBackgroundView() }
             .navigationTitle("Night Shift — Triage")
             .navigationBarTitleDisplayMode(.inline)
         }

@@ -28,7 +28,7 @@ struct BriefingView: View {
             Color.black.frame(height: 56)
 
             ZStack(alignment: .topTrailing) {
-                Color(red: 0.035, green: 0.04, blue: 0.055)
+                CinematicBackgroundView()
 
                 VStack(alignment: .leading, spacing: 18) {
                     Spacer(minLength: 0)

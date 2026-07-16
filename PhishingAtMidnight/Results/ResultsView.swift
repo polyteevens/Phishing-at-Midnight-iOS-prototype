@@ -116,7 +116,7 @@ struct ResultsView: View {
             .frame(maxWidth: .infinity)
             .padding(.bottom, 40)
         }
-        .background(Color.black.ignoresSafeArea())
+        .background { CinematicBackgroundView() }
         .task { await playReveal() }
     }
 

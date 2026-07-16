@@ -33,6 +33,7 @@
 		BD222B7BF4AF8728822C8576 /* EmailInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6BA9226C1D05D7A5B1AA0A /* EmailInspectorView.swift */; };
 		8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2ABCDF10DED7C21468BA /* TriageEngine.swift */; };
 		CFB9D6DE3C9D3B032630B069 /* TriageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784DEE01ADE173FD1ACD26C /* TriageView.swift */; };
+		F187406259D3F9E7648E0928 /* CinematicBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30947AC9FB534DEE914A3F6 /* CinematicBackgroundView.swift */; };
 		BCDEA934D2501353B4C4CE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */; };
 		A967D30CAEF972C0B1D3D0A3 /* specimens.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DCDC87185698C6AF3DDEE31 /* specimens.json */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		EE6BA9226C1D05D7A5B1AA0A /* EmailInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmailInspectorView.swift"; sourceTree = "<group>"; };
 		694E2ABCDF10DED7C21468BA /* TriageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriageEngine.swift"; sourceTree = "<group>"; };
 		3784DEE01ADE173FD1ACD26C /* TriageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriageView.swift"; sourceTree = "<group>"; };
+		B30947AC9FB534DEE914A3F6 /* CinematicBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CinematicBackgroundView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,14 @@
 			path = "Triage";
 			sourceTree = "<group>";
 		};
+		1D784972683DC02D23CE11BD /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				B30947AC9FB534DEE914A3F6 /* CinematicBackgroundView.swift */,
+			);
+			path = "Visuals";
+			sourceTree = "<group>";
+		};
 		0D0822E5013C563F2C1F2528 /* PhishingAtMidnight */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 				6EE67047A4B2648DDBB08231 /* Services */,
 				5AFB204A453BFEED23305690 /* StartView.swift */,
 				ABDA46DDEEB24F8B4F0C0772 /* Triage */,
+				1D784972683DC02D23CE11BD /* Visuals */,
 			);
 			path = "PhishingAtMidnight";
 			sourceTree = "<group>";
@@ -315,6 +326,7 @@
 				BD222B7BF4AF8728822C8576 /* EmailInspectorView.swift in Sources */,
 				8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */,
 				CFB9D6DE3C9D3B032630B069 /* TriageView.swift in Sources */,
+				F187406259D3F9E7648E0928 /* CinematicBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

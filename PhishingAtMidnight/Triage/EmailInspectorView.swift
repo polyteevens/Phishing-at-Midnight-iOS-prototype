@@ -28,7 +28,7 @@ struct EmailInspectorView: View {
             }
             .padding(20)
         }
-        .background(Color.black.ignoresSafeArea())
+        .background { CinematicBackgroundView() }
         .scrollBounceBehavior(.basedOnSize)
     }
 

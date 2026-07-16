@@ -10,7 +10,7 @@ struct StartView: View {
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            CinematicBackgroundView()
 
             VStack(spacing: 24) {
                 Spacer()
