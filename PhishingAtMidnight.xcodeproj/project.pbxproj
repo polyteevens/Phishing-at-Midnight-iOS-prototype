@@ -22,6 +22,8 @@
 		4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */; };
 		9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */; };
 		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
+		6019280E6B7EA5866CF46ABC /* NarrativeContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37777611501FA20CDA9BA13 /* NarrativeContent.swift */; };
+		6EBABD5391E2CCDFD858B433 /* PatientPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD631E0B88EBB80C95B5C467 /* PatientPortraitView.swift */; };
 		E6005E5BEE26555B1BDFD5CB /* GameProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FA238B7C863A5EBAE9E0C /* GameProgressStore.swift */; };
 		B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */; };
 		56F6372BB17568E21B6A0E4B /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D1A31F39310DE9C706750 /* ResultsView.swift */; };
@@ -52,6 +54,8 @@
 		3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterView.swift"; sourceTree = "<group>"; };
 		E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisruptionMeterView.swift"; sourceTree = "<group>"; };
 		3544A4C03C0F3C9037893E32 /* MeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterBarView.swift"; sourceTree = "<group>"; };
+		C37777611501FA20CDA9BA13 /* NarrativeContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NarrativeContent.swift"; sourceTree = "<group>"; };
+		BD631E0B88EBB80C95B5C467 /* PatientPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientPortraitView.swift"; sourceTree = "<group>"; };
 		573FA238B7C863A5EBAE9E0C /* GameProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameProgressStore.swift"; sourceTree = "<group>"; };
 		81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhishingAtMidnightApp.swift"; sourceTree = "<group>"; };
 		3DCDC87185698C6AF3DDEE31 /* specimens.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "specimens.json"; sourceTree = "<group>"; };
@@ -123,6 +127,15 @@
 			path = "Meters";
 			sourceTree = "<group>";
 		};
+		19F8969A7DE4621BD98DB9E0 /* Narrative */ = {
+			isa = PBXGroup;
+			children = (
+				C37777611501FA20CDA9BA13 /* NarrativeContent.swift */,
+				BD631E0B88EBB80C95B5C467 /* PatientPortraitView.swift */,
+			);
+			path = "Narrative";
+			sourceTree = "<group>";
+		};
 		58E9ADE652AF179ADC513A41 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 				B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */,
 				5D4F49480EB7D61952A56F96 /* Juice */,
 				0663F5E7D9DB000022EE2CC6 /* Meters */,
+				19F8969A7DE4621BD98DB9E0 /* Narrative */,
 				58E9ADE652AF179ADC513A41 /* Persistence */,
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
 				A024F06580C79B7582C3806A /* Resources */,
@@ -287,6 +301,8 @@
 				4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */,
 				9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */,
 				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
+				6019280E6B7EA5866CF46ABC /* NarrativeContent.swift in Sources */,
+				6EBABD5391E2CCDFD858B433 /* PatientPortraitView.swift in Sources */,
 				E6005E5BEE26555B1BDFD5CB /* GameProgressStore.swift in Sources */,
 				B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */,
 				56F6372BB17568E21B6A0E4B /* ResultsView.swift in Sources */,

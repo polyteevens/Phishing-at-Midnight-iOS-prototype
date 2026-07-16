@@ -15,8 +15,11 @@ struct BriefingView: View {
         "SUPERVISOR MORALES",
         "New analyst. Good, we need one. Patient records are on the line tonight — every email that reaches staff is a live decision.",
         "Quarantine what's dangerous. Let the real ones through. Get it wrong in either direction and people get hurt.",
+        NarrativeContent.briefingPatientLine,
         "OBJECTIVE: Clear the queue before your Breach or Disruption meter maxes out.",
     ]
+
+    private let patientLineIndex = 4
 
     private var skipAvailable: Bool { hasSeenBriefing }
 
@@ -31,10 +34,20 @@ struct BriefingView: View {
                     Spacer(minLength: 0)
                     ForEach(Array(lines.enumerated()), id: \.offset) { index, line in
                         if index < visibleLineCount {
-                            Text(line)
-                                .font(font(for: index))
-                                .foregroundStyle(color(for: index))
+                            if index == patientLineIndex {
+                                HStack(alignment: .top, spacing: 14) {
+                                    PatientPortraitView(isSafe: true)
+                                    Text(line)
+                                        .font(font(for: index))
+                                        .foregroundStyle(color(for: index))
+                                }
                                 .transition(.opacity.combined(with: .move(edge: .leading)))
+                            } else {
+                                Text(line)
+                                    .font(font(for: index))
+                                    .foregroundStyle(color(for: index))
+                                    .transition(.opacity.combined(with: .move(edge: .leading)))
+                            }
                         }
                     }
                     Spacer(minLength: 0)
@@ -67,7 +80,7 @@ struct BriefingView: View {
     }
 
     private func playSequence() async {
-        let delaysBetweenLines: [Double] = [0.4, 0.6, 1.0, 1.6, 1.6]
+        let delaysBetweenLines: [Double] = [0.4, 0.6, 1.0, 1.6, 1.7, 1.5]
         for delay in delaysBetweenLines {
             try? await Task.sleep(for: .seconds(delay))
             guard !Task.isCancelled else { return }
