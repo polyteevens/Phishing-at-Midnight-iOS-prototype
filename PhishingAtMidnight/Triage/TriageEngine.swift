@@ -1,7 +1,8 @@
 import Foundation
 
-/// Game rules, meters, and timers for one Triage run. Deliberately has no
-/// SwiftUI import — TriageView renders this, it never drives the rules.
+/// Game rules, meters, timers, combo streak, tension state, and the rare
+/// coordinated-attack event for one Triage run. Deliberately has no SwiftUI
+/// import — TriageView renders this, it never drives the rules.
 @Observable
 final class TriageEngine {
     enum Phase: Equatable {
@@ -30,6 +31,36 @@ final class TriageEngine {
         case flag
     }
 
+    /// The mood the presentation should be in right now, driven entirely by
+    /// the Breach meter — see GameConfig.Tension for the cutoffs.
+    enum TensionState: Equatable {
+        case calm
+        case pressure
+        case critical
+    }
+
+    /// What kind of feedback beat a resolved decision deserves.
+    enum CallOutcomeKind: Equatable {
+        case confidentCorrect
+        case mistakeBreach
+        case mistakeDisruption
+        case flagged
+    }
+
+    /// A one-shot signal TriageView observes (via `.onChange`) to fire the
+    /// right juice for whatever just happened — particles and a flying score
+    /// for a confident correct call, a flash/stamp/shake for a real mistake,
+    /// a quieter "shatter" cue when Flag breaks a streak without a meter hit.
+    struct DecisionFeedback: Identifiable, Equatable {
+        let id = UUID()
+        let kind: CallOutcomeKind
+        let decision: Decision
+        let pointsEarned: Double
+        let comboStreak: Int
+        let comboMultiplier: Double
+        let brokenStreak: Int
+    }
+
     struct RunResult: Equatable {
         let outcome: Outcome
         let grade: Grade
@@ -39,6 +70,8 @@ final class TriageEngine {
         let finalDisruption: Double
         let correctCount: Int
         let totalDecisions: Int
+        let bestCombo: Int
+        let rareEventOccurred: Bool
     }
 
     struct InboxItem: Identifiable, Equatable {
@@ -56,6 +89,7 @@ final class TriageEngine {
         let correct: Bool
         let weight: Double
         let timeToDecide: TimeInterval
+        let comboMultiplierAtDecision: Double
     }
 
     private static let cosmeticTimestamps = [
@@ -72,13 +106,39 @@ final class TriageEngine {
     private(set) var resolvedCount: Int = 0
     private(set) var totalToArrive: Int = 0
 
+    private(set) var comboStreak: Int = 0
+    private(set) var comboMultiplier: Double = 1.0
+    private(set) var bestComboThisRun: Int = 0
+    private(set) var lastFeedback: DecisionFeedback?
+
+    private(set) var rareEventActive: Bool = false
+    private(set) var rareEventTriggerToken: Int = 0
+    private(set) var criticalEnteredToken: Int = 0
+
     var missionDuration: TimeInterval { GameConfig.Timing.missionDuration }
     var timeRemaining: TimeInterval { max(0, missionDuration - elapsed) }
+
+    var tensionState: TensionState {
+        if breachMeter >= GameConfig.Tension.criticalThreshold { return .critical }
+        if breachMeter >= GameConfig.Tension.pressureThreshold { return .pressure }
+        return .calm
+    }
 
     private let fullPool: [Specimen]
     private var pendingArrivals: [InboxItem] = []
     private var decisions: [DecisionRecord] = []
     private var tickTask: Task<Void, Never>?
+
+    private var previousTensionState: TensionState = .calm
+    private var hitStopTicksRemaining: Int = 0
+    private var rareEventArmed: Bool = false
+    private var rareEventFireAt: TimeInterval = .infinity
+    private var rareEventEndsAt: TimeInterval = 0
+    private var rareEventFiredThisRun: Bool = false
+
+    private var hitStopTicks: Int {
+        max(1, Int((GameConfig.Juice.hitStopDuration / 0.1).rounded()))
+    }
 
     init(pool: [Specimen]) {
         self.fullPool = pool
@@ -103,6 +163,24 @@ final class TriageEngine {
         disruptionMeter = 0
         elapsed = 0
         phase = .running
+
+        comboStreak = 0
+        comboMultiplier = 1.0
+        bestComboThisRun = 0
+        lastFeedback = nil
+        rareEventActive = false
+        hitStopTicksRemaining = 0
+        previousTensionState = .calm
+        rareEventFiredThisRun = false
+
+        rareEventArmed = Double.random(in: 0...1) < GameConfig.RareEvent.probabilityPerRun
+        if rareEventArmed {
+            let windowStart = missionDuration * GameConfig.RareEvent.triggerWindow.lowerBound
+            let windowEnd = missionDuration * GameConfig.RareEvent.triggerWindow.upperBound
+            rareEventFireAt = Double.random(in: windowStart...windowEnd)
+        } else {
+            rareEventFireAt = .infinity
+        }
 
         tickTask = Task { [weak self] in
             while let self, !Task.isCancelled {
@@ -131,7 +209,21 @@ final class TriageEngine {
 
     private func tick(deltaTime: TimeInterval) {
         guard phase == .running else { return }
+
+        if hitStopTicksRemaining > 0 {
+            hitStopTicksRemaining -= 1
+            return
+        }
+
         elapsed += deltaTime
+
+        if rareEventArmed && elapsed >= rareEventFireAt {
+            rareEventArmed = false
+            triggerRareEvent()
+        }
+        if rareEventActive && elapsed >= rareEventEndsAt {
+            rareEventActive = false
+        }
 
         while let next = pendingArrivals.first, next.arrivalTime <= elapsed {
             pendingArrivals.removeFirst()
@@ -152,6 +244,13 @@ final class TriageEngine {
             resolvedCount += 1
         }
 
+        let currentTension = tensionState
+        if currentTension == .critical && previousTensionState != .critical {
+            hitStopTicksRemaining = max(hitStopTicksRemaining, hitStopTicks)
+            criticalEnteredToken += 1
+        }
+        previousTensionState = currentTension
+
         checkForEnd()
     }
 
@@ -167,6 +266,42 @@ final class TriageEngine {
         } else if pendingArrivals.isEmpty && inbox.isEmpty && resolvedCount >= totalToArrive && totalToArrive > 0 {
             finish(outcome: .cleared)
         }
+    }
+
+    // MARK: - Rare event
+
+    private func triggerRareEvent() {
+        let dangerousPendingIndices = pendingArrivals.indices.filter { pendingArrivals[$0].specimen.isDangerous }
+        guard !dangerousPendingIndices.isEmpty else { return }
+
+        let chosenIndices = Array(dangerousPendingIndices.shuffled().prefix(GameConfig.RareEvent.burstCount)).sorted(by: >)
+        var burst: [InboxItem] = []
+        for index in chosenIndices {
+            burst.append(pendingArrivals.remove(at: index))
+        }
+
+        var clusterTime = elapsed + 0.2
+        let rescheduled = burst.map { item -> InboxItem in
+            let deadline = clusterTime + Double.random(in: GameConfig.RareEvent.burstClickTimerRange)
+            let newItem = InboxItem(
+                id: item.id,
+                specimen: item.specimen,
+                displayName: item.displayName,
+                displayTimestamp: item.displayTimestamp,
+                arrivalTime: clusterTime,
+                clickDeadline: deadline
+            )
+            clusterTime += GameConfig.RareEvent.burstArrivalStagger
+            return newItem
+        }
+
+        pendingArrivals.append(contentsOf: rescheduled)
+        pendingArrivals.sort { $0.arrivalTime < $1.arrivalTime }
+
+        rareEventActive = true
+        rareEventEndsAt = clusterTime + 4
+        rareEventFiredThisRun = true
+        rareEventTriggerToken += 1
     }
 
     // MARK: - Decision recording & scoring
@@ -204,13 +339,55 @@ final class TriageEngine {
             }
         }
 
+        let isConfidentCorrect = weight >= 1.0
+        let brokenStreak = (!isConfidentCorrect && comboStreak > 0) ? comboStreak : 0
+
+        var pointsEarned: Double = 0
+        if isConfidentCorrect {
+            comboStreak += 1
+            comboMultiplier = GameConfig.Combo.multiplier(forStreak: comboStreak)
+            bestComboThisRun = max(bestComboThisRun, comboStreak)
+            let ratio = max(0, 1 - (timeToDecide / (2 * GameConfig.Scoring.speedBonusFullCreditWindow)))
+            pointsEarned = GameConfig.Scoring.speedBonusMaxPerDecision * ratio * comboMultiplier
+        } else {
+            comboStreak = 0
+            comboMultiplier = 1.0
+        }
+
         decisions.append(DecisionRecord(
             isDangerous: isDangerous,
             decision: resolvedDecision,
             correct: correct,
             weight: weight,
-            timeToDecide: timeToDecide
+            timeToDecide: timeToDecide,
+            comboMultiplierAtDecision: isConfidentCorrect ? comboMultiplier : 1.0
         ))
+
+        let kind: CallOutcomeKind
+        if isConfidentCorrect {
+            kind = .confidentCorrect
+        } else if autoClicked || (resolvedDecision == .allow && isDangerous) {
+            kind = .mistakeBreach
+        } else if resolvedDecision == .quarantine && !isDangerous {
+            kind = .mistakeDisruption
+        } else {
+            kind = .flagged
+        }
+
+        lastFeedback = DecisionFeedback(
+            kind: kind,
+            decision: resolvedDecision,
+            pointsEarned: pointsEarned,
+            comboStreak: comboStreak,
+            comboMultiplier: comboMultiplier,
+            brokenStreak: brokenStreak
+        )
+
+        if kind == .mistakeBreach || kind == .mistakeDisruption {
+            hitStopTicksRemaining = max(hitStopTicksRemaining, hitStopTicks)
+        } else if kind == .confidentCorrect && resolvedDecision == .quarantine {
+            hitStopTicksRemaining = max(hitStopTicksRemaining, hitStopTicks)
+        }
     }
 
     private func finish(outcome: Outcome) {
@@ -225,7 +402,8 @@ final class TriageEngine {
                 decision: .flag,
                 correct: false,
                 weight: 0,
-                timeToDecide: elapsed - item.arrivalTime
+                timeToDecide: elapsed - item.arrivalTime,
+                comboMultiplierAtDecision: 1.0
             ))
         }
         inbox = []
@@ -238,7 +416,7 @@ final class TriageEngine {
         let perDecisionSpeedBonus = decisions.reduce(0.0) { partial, record in
             guard record.weight >= 1.0 else { return partial }
             let ratio = max(0, 1 - (record.timeToDecide / (2 * window)))
-            return partial + GameConfig.Scoring.speedBonusMaxPerDecision * ratio
+            return partial + GameConfig.Scoring.speedBonusMaxPerDecision * ratio * record.comboMultiplierAtDecision
         }
         let timeRemainingBonus = (outcome == .cleared)
             ? timeRemaining * GameConfig.Scoring.timeRemainingBonusPerSecond
@@ -268,7 +446,9 @@ final class TriageEngine {
             finalBreach: breachMeter,
             finalDisruption: disruptionMeter,
             correctCount: correctCount,
-            totalDecisions: total
+            totalDecisions: total,
+            bestCombo: bestComboThisRun,
+            rareEventOccurred: rareEventFiredThisRun
         )
         phase = .ended(result)
     }

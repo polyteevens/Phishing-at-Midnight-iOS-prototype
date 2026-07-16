@@ -193,7 +193,8 @@ private struct MiniMeterStatView: View {
     ResultsView(
         result: .init(
             outcome: .cleared, grade: .gold, accuracy: 96, speedBonus: 22.5,
-            finalBreach: 0, finalDisruption: 5, correctCount: 11, totalDecisions: 11
+            finalBreach: 0, finalDisruption: 5, correctCount: 11, totalDecisions: 11,
+            bestCombo: 9, rareEventOccurred: false
         ),
         best: .init(grade: .gold, accuracy: 96),
         onReplay: {}, onExit: {}
@@ -205,7 +206,8 @@ private struct MiniMeterStatView: View {
     ResultsView(
         result: .init(
             outcome: .breached, grade: .failed, accuracy: 54, speedBonus: 4,
-            finalBreach: 100, finalDisruption: 25, correctCount: 6, totalDecisions: 11
+            finalBreach: 100, finalDisruption: 25, correctCount: 6, totalDecisions: 11,
+            bestCombo: 4, rareEventOccurred: true
         ),
         best: .init(grade: .silver, accuracy: 78),
         onReplay: {}, onExit: {}
