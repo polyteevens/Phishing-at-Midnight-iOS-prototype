@@ -109,9 +109,12 @@ struct TriageView: View {
         ScrollView {
             LazyVStack(spacing: 10) {
                 ForEach(engine.inbox) { item in
-                    InboxRowView(item: item)
-                        .contentShape(Rectangle())
-                        .onTapGesture { selectedItemID = item.id }
+                    Button {
+                        selectedItemID = item.id
+                    } label: {
+                        InboxRowView(item: item)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
