@@ -1,10 +1,11 @@
 import SwiftUI
 
-/// Owns the Triage ↔ Results loop for one play session: runs a mission,
-/// shows the results screen, and starts a fresh (ramped) run on Replay.
-/// BriefingView will be inserted as a phase here once it exists.
+/// Owns one play session: Briefing (shown once per session, skippable after
+/// its first-ever view), then the Triage ↔ Results loop — Replay starts a
+/// fresh, ramped run without replaying the Briefing.
 struct GameFlowView: View {
     enum Phase: Equatable {
+        case briefing
         case triage
         case results(TriageEngine.RunResult)
     }
@@ -13,7 +14,7 @@ struct GameFlowView: View {
     let onExit: () -> Void
 
     @State private var replayCount: Int
-    @State private var phase: Phase = .triage
+    @State private var phase: Phase = .briefing
 
     init(pool: [Specimen], replayCount: Int = 0, onExit: @escaping () -> Void) {
         self.pool = pool
@@ -23,6 +24,10 @@ struct GameFlowView: View {
 
     var body: some View {
         switch phase {
+        case .briefing:
+            BriefingView {
+                phase = .triage
+            }
         case .triage:
             TriageView(pool: pool, replayCount: replayCount) { result in
                 phase = .results(result)
