@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD5064D54E9907252264E20E /* Specimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5DEB591464F9ADCEFFC5C /* Specimen.swift */; };
+		E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */; };
 		B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */; };
 		47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB204A453BFEED23305690 /* StartView.swift */; };
 		BCDEA934D2501353B4C4CE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */; };
+		A967D30CAEF972C0B1D3D0A3 /* specimens.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DCDC87185698C6AF3DDEE31 /* specimens.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E16D97483743F75E92295108 /* PhishingAtMidnight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishingAtMidnight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		56F5DEB591464F9ADCEFFC5C /* Specimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Specimen.swift"; sourceTree = "<group>"; };
+		AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecimenLoader.swift"; sourceTree = "<group>"; };
 		81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhishingAtMidnightApp.swift"; sourceTree = "<group>"; };
+		3DCDC87185698C6AF3DDEE31 /* specimens.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "specimens.json"; sourceTree = "<group>"; };
 		5AFB204A453BFEED23305690 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,11 +36,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CA548B1171C9820DE76F119 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				56F5DEB591464F9ADCEFFC5C /* Specimen.swift */,
+				AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */,
+			);
+			path = "Content";
+			sourceTree = "<group>";
+		};
+		A024F06580C79B7582C3806A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3DCDC87185698C6AF3DDEE31 /* specimens.json */,
+			);
+			path = "Resources";
+			sourceTree = "<group>";
+		};
 		0D0822E5013C563F2C1F2528 /* PhishingAtMidnight */ = {
 			isa = PBXGroup;
 			children = (
 				CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */,
+				7CA548B1171C9820DE76F119 /* Content */,
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
+				A024F06580C79B7582C3806A /* Resources */,
 				5AFB204A453BFEED23305690 /* StartView.swift */,
 			);
 			path = "PhishingAtMidnight";
@@ -115,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDEA934D2501353B4C4CE9F /* Assets.xcassets in Resources */,
+				A967D30CAEF972C0B1D3D0A3 /* specimens.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5064D54E9907252264E20E /* Specimen.swift in Sources */,
+				E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */,
 				B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */,
 				47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */,
 			);

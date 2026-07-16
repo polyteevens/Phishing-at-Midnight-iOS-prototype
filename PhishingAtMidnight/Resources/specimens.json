@@ -1,0 +1,227 @@
+[
+  {
+    "id": "it-password-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["IT Support", "IT Support Desk"],
+    "senderDomain": "hospital-secure.co",
+    "subject": "Password expires in 10 minutes — reset now",
+    "body": "Your network password will expire in 10 minutes. Reset immediately to avoid being locked out of clinical systems.",
+    "link": {
+      "claimedURL": "realhospital.org/password-reset",
+      "trueURL": "verify-now.co/reset?id=88213"
+    },
+    "attachmentName": null,
+    "tell": "Lookalike sender domain (hospital-secure.co, not realhospital.org). The link claims to go to the real reset page but actually points to verify-now.co. The 10-minute deadline is manufactured urgency — real IT never gives you 10 minutes.",
+    "twinGroup": "it-password",
+    "difficulty": "normal"
+  },
+  {
+    "id": "it-password-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["IT Support", "IT Support Desk"],
+    "senderDomain": "realhospital.org",
+    "subject": "Your password expires in 3 days — reset here",
+    "body": "As a reminder, your network password expires in 3 days. You can reset it any time before then from the employee portal.",
+    "link": {
+      "claimedURL": "realhospital.org/password-reset",
+      "trueURL": "realhospital.org/password-reset"
+    },
+    "attachmentName": null,
+    "tell": "Correct internal domain, the link genuinely matches what it claims, and the timeline is reasonable — this is routine IT hygiene, not an attack.",
+    "twinGroup": "it-password",
+    "difficulty": "normal"
+  },
+  {
+    "id": "hr-direct-deposit-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["HR Payroll", "Payroll Department"],
+    "senderDomain": "rea1hospital.org",
+    "subject": "Update your direct deposit info",
+    "body": "Payroll is migrating to a new banking partner. Please confirm your direct deposit details before Friday's payroll run.",
+    "link": {
+      "claimedURL": "realhospital.org/payroll/direct-deposit",
+      "trueURL": "rea1hospital.org/payroll/direct-deposit"
+    },
+    "attachmentName": null,
+    "tell": "Typosquat domain — a numeral 1 replaces the letter l in \"rea1hospital.org\". Easy to miss at a glance. Anything asking you to re-enter banking details via email is worth extra scrutiny.",
+    "twinGroup": "hr",
+    "difficulty": "normal"
+  },
+  {
+    "id": "hr-enrollment-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["HR", "Human Resources"],
+    "senderDomain": "realhospital.org",
+    "subject": "Open enrollment ends Friday — action required",
+    "body": "This is a reminder that open enrollment for benefits closes this Friday at 5pm. Log in to the employee portal to make or confirm your selections.",
+    "link": {
+      "claimedURL": "realhospital.org/benefits/enrollment",
+      "trueURL": "realhospital.org/benefits/enrollment"
+    },
+    "attachmentName": null,
+    "tell": "Correct domain, link matches its destination, and the urgency is genuine — open enrollment deadlines are real and this is exactly how HR announces them.",
+    "twinGroup": "hr",
+    "difficulty": "normal"
+  },
+  {
+    "id": "exec-giftcard-bec",
+    "isDangerous": true,
+    "senderDisplayNames": ["Dr. Patel", "Dr. R. Patel (CEO)"],
+    "senderDomain": "gmail.com",
+    "subject": "Quick favor — urgent",
+    "body": "I'm stuck in a board meeting and can't talk. I need you to buy $500 in gift cards for a vendor appreciation gift and send me the codes. Handle this quietly, don't loop in anyone else, and don't call me right now.",
+    "link": null,
+    "attachmentName": null,
+    "tell": "The CEO is supposedly emailing from a personal Gmail account, not the hospital domain. Stack that with urgency, secrecy (\"don't call me\"), and an unusual money request, and this is a textbook business email compromise attempt — no link or attachment needed to make it dangerous.",
+    "twinGroup": "exec-bec",
+    "difficulty": "normal"
+  },
+  {
+    "id": "ms-security-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["Microsoft Security", "Microsoft Account Team"],
+    "senderDomain": "microsftonline.com",
+    "subject": "Unusual sign-in detected — verify now",
+    "body": "We detected an unusual sign-in to your account from a new device. If this wasn't you, verify your identity immediately to secure your account.",
+    "link": {
+      "claimedURL": "login.microsoftonline.com/verify",
+      "trueURL": "microsftonline.com/verify-account"
+    },
+    "attachmentName": null,
+    "tell": "The sender domain is misspelled — \"microsftonline.com\" is missing the \"o\" in Microsoft. Real Microsoft security alerts always come from microsoftonline.com or microsoft.com.",
+    "twinGroup": "ms-security",
+    "difficulty": "normal"
+  },
+  {
+    "id": "billing-invoice-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["Billing", "Accounts Payable"],
+    "senderDomain": "medsupply-invoices.com",
+    "subject": "Invoice 4471 past due",
+    "body": "Attached is invoice 4471, which is now past due. Please open the attachment and process payment today to avoid a late fee.",
+    "link": null,
+    "attachmentName": "Invoice_4471.docm",
+    "tell": "The hospital has no relationship with this vendor, and the attachment is a macro-enabled Word document (.docm) — a common way to smuggle in malicious code once macros are enabled.",
+    "twinGroup": "billing-invoice",
+    "difficulty": "normal"
+  },
+  {
+    "id": "billing-invoice-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["Billing", "Accounts Payable"],
+    "senderDomain": "knownmedsupply.com",
+    "subject": "Invoice 882 for this month's supply order",
+    "body": "Attached is invoice 882 for this month's medical supply order. Let us know if you have any questions about the line items.",
+    "link": null,
+    "attachmentName": "Invoice_882.pdf",
+    "tell": "This is a vendor the hospital actually has an ongoing relationship with, and the attachment is a plain PDF — no macros, no executable content.",
+    "twinGroup": "billing-invoice",
+    "difficulty": "normal"
+  },
+  {
+    "id": "docshare-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["Doc Share", "Document Center"],
+    "senderDomain": "sharepoint-files.net",
+    "subject": "Dr. Chen shared a file with you",
+    "body": "Dr. Chen has shared \"Patient_Intake_Q3.xlsx\" with you. Sign in with your work email to view the document.",
+    "link": {
+      "claimedURL": "realhospital.org/sharepoint/Patient_Intake_Q3",
+      "trueURL": "sharepoint-files.net/login?redirect=Patient_Intake_Q3"
+    },
+    "attachmentName": null,
+    "tell": "The domain isn't the hospital's real document system — \"sharepoint-files.net\" is not an org domain. This is a generic credential-harvesting lure dressed up as a shared file notification.",
+    "twinGroup": "docshare",
+    "difficulty": "normal"
+  },
+  {
+    "id": "docshare-real-maria",
+    "isDangerous": false,
+    "senderDisplayNames": ["Maria Lopez"],
+    "senderDomain": "realhospital.org",
+    "subject": "Sharing the schedule doc",
+    "body": "Hi, here's the shift schedule doc we talked about at standup. Let me know if anything looks off.",
+    "link": {
+      "claimedURL": "realhospital.org/docs/shift-schedule",
+      "trueURL": "realhospital.org/docs/shift-schedule"
+    },
+    "attachmentName": null,
+    "tell": "A real coworker, correct internal domain, and the link goes exactly where it says — this is an ordinary internal file share.",
+    "twinGroup": "docshare",
+    "difficulty": "normal"
+  },
+  {
+    "id": "voicemail-fake",
+    "isDangerous": true,
+    "senderDisplayNames": ["Voicemail", "Voicemail Service"],
+    "senderDomain": "hospital-msg-portal.com",
+    "subject": "New voicemail (0:42)",
+    "body": "You have a new voicemail message. Open the attached file to listen.",
+    "link": null,
+    "attachmentName": "New_Voicemail.html",
+    "tell": "Voicemail notifications don't come as .html attachments — that's not how audio messages work. This is an external, non-org domain paired with a suspicious attachment type built to open a fake login page.",
+    "twinGroup": "voicemail",
+    "difficulty": "normal"
+  },
+  {
+    "id": "lab-results-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["Lab Results", "Clinical Lab System"],
+    "senderDomain": "realhospital.org",
+    "subject": "STAT result ready for review",
+    "body": "A STAT lab result for a patient under Dr. Osei's care is ready for review in the clinical system. Please review as soon as possible.",
+    "link": {
+      "claimedURL": "realhospital.org/labs/results",
+      "trueURL": "realhospital.org/labs/results"
+    },
+    "attachmentName": null,
+    "tell": "Correct internal domain and this is exactly what the real clinical lab system sounds like. It's urgent because it's real — a patient is waiting on this result, and quarantining it delays real care.",
+    "twinGroup": "lab-results",
+    "difficulty": "normal"
+  },
+  {
+    "id": "it-maintenance-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["IT Support", "IT Operations"],
+    "senderDomain": "realhospital.org",
+    "subject": "System maintenance tonight 2am — save your work",
+    "body": "Scheduled maintenance will take clinical systems offline briefly starting at 2am tonight. Please save your work before then. Expected downtime is under 15 minutes.",
+    "link": null,
+    "attachmentName": null,
+    "tell": "Correct domain, plausible content, and a normal heads-up notice. The urgent tone is just IT being considerate about downtime, not a manipulation tactic.",
+    "twinGroup": "it-maintenance",
+    "difficulty": "normal"
+  },
+  {
+    "id": "cme-training-real",
+    "isDangerous": false,
+    "senderDisplayNames": ["LearnWell CME", "LearnWell Training Team"],
+    "senderDomain": "learnwell-cme.com",
+    "subject": "Your assigned training is due",
+    "body": "This is a reminder that your annual continuing education module is due by the end of the month. Log in to your LearnWell account to complete it.",
+    "link": {
+      "claimedURL": "learnwell-cme.com/dashboard",
+      "trueURL": "learnwell-cme.com/dashboard"
+    },
+    "attachmentName": null,
+    "tell": "External domain, but it's a known continuing-education provider the hospital actually contracts with, and everything about the link and message matches what that relationship looks like.",
+    "twinGroup": "cme-training",
+    "difficulty": "normal"
+  },
+  {
+    "id": "spearphish-maria-followup",
+    "isDangerous": true,
+    "senderDisplayNames": ["Maria Lopez", "M. Lopez"],
+    "senderDomain": "realhospita1.org",
+    "subject": "Following up on the schedule doc",
+    "body": "Hey, following up on that schedule doc from earlier — can you take a look at the updated version and confirm your shift? Link below.",
+    "link": {
+      "claimedURL": "realhospital.org/docs/shift-schedule-v2",
+      "trueURL": "realhospita1.org/docs/shift-schedule-v2"
+    },
+    "attachmentName": null,
+    "tell": "A typosquat domain — \"realhospita1.org\" uses a numeral 1 in place of the letter l. This one specifically names a real coworker you've already seen this shift to borrow their trust. Late-shift fatigue is exactly when this kind of familiarity trick works.",
+    "twinGroup": "docshare",
+    "difficulty": "hard"
+  }
+]
