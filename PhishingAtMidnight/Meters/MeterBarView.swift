@@ -40,7 +40,9 @@ struct MeterBarView: View {
                     RoundedRectangle(cornerRadius: 4, style: .continuous)
                         .fill(tint.gradient)
                         .frame(width: geometry.size.width * clamped / GameConfig.Meters.failThreshold)
-                        .animation(.easeOut(duration: 0.35), value: clamped)
+                        // Underdamped spring so a spike overshoots slightly
+                        // before settling — a jump should feel like a surge.
+                        .animation(.spring(response: 0.45, dampingFraction: 0.62), value: clamped)
                 }
             }
             .frame(height: 8)
