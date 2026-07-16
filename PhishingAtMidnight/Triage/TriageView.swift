@@ -13,6 +13,7 @@ struct TriageView: View {
     @State private var engine: TriageEngine
     @State private var selectedItemID: TriageEngine.InboxItem.ID?
     @State private var teaching: TeachingMoment?
+    @State private var haptics = HapticsAudioService()
 
     private let replayCount: Int
     private let onFinished: (TriageEngine.RunResult) -> Void
@@ -50,11 +51,30 @@ struct TriageView: View {
             inspectorContent
         }
         .overlay(alignment: .top) { teachingBanner }
-        .task { engine.startRun(replayCount: replayCount) }
+        .sensoryFeedback(trigger: teaching?.id) { _, _ in
+            teaching.map { $0.wasCorrect ? .success : .warning }
+        }
+        .task {
+            engine.startRun(replayCount: replayCount)
+            haptics.playAmbient()
+        }
+        .onChange(of: engine.breachMeter) { _, new in
+            haptics.updateTension(breach: new, disruption: engine.disruptionMeter)
+        }
+        .onChange(of: engine.disruptionMeter) { _, new in
+            haptics.updateTension(breach: engine.breachMeter, disruption: new)
+        }
         .onChange(of: engine.phase) { _, newPhase in
             if case .ended(let result) = newPhase {
+                haptics.stopAmbient()
+                haptics.stopTension()
+                haptics.missionEndBeat(outcome: result.outcome)
                 onFinished(result)
             }
+        }
+        .onDisappear {
+            haptics.stopAmbient()
+            haptics.stopTension()
         }
     }
 

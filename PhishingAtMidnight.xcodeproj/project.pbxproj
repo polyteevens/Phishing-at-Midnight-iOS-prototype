@@ -18,6 +18,7 @@
 		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
 		B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */; };
 		56F6372BB17568E21B6A0E4B /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D1A31F39310DE9C706750 /* ResultsView.swift */; };
+		770C90453B3EA7C2EDA42252 /* HapticsAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501D1E914E295F9F06A48247 /* HapticsAudioService.swift */; };
 		47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB204A453BFEED23305690 /* StartView.swift */; };
 		BD222B7BF4AF8728822C8576 /* EmailInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6BA9226C1D05D7A5B1AA0A /* EmailInspectorView.swift */; };
 		8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2ABCDF10DED7C21468BA /* TriageEngine.swift */; };
@@ -41,6 +42,7 @@
 		81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhishingAtMidnightApp.swift"; sourceTree = "<group>"; };
 		3DCDC87185698C6AF3DDEE31 /* specimens.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "specimens.json"; sourceTree = "<group>"; };
 		6B0D1A31F39310DE9C706750 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView.swift"; sourceTree = "<group>"; };
+		501D1E914E295F9F06A48247 /* HapticsAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HapticsAudioService.swift"; sourceTree = "<group>"; };
 		5AFB204A453BFEED23305690 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartView.swift"; sourceTree = "<group>"; };
 		EE6BA9226C1D05D7A5B1AA0A /* EmailInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmailInspectorView.swift"; sourceTree = "<group>"; };
 		694E2ABCDF10DED7C21468BA /* TriageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriageEngine.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 			path = "Results";
 			sourceTree = "<group>";
 		};
+		6EE67047A4B2648DDBB08231 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				501D1E914E295F9F06A48247 /* HapticsAudioService.swift */,
+			);
+			path = "Services";
+			sourceTree = "<group>";
+		};
 		ABDA46DDEEB24F8B4F0C0772 /* Triage */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
 				A024F06580C79B7582C3806A /* Resources */,
 				06D5F68EA1407406E8273B90 /* Results */,
+				6EE67047A4B2648DDBB08231 /* Services */,
 				5AFB204A453BFEED23305690 /* StartView.swift */,
 				ABDA46DDEEB24F8B4F0C0772 /* Triage */,
 			);
@@ -235,6 +246,7 @@
 				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
 				B25928A437EC01A888F74F97 /* PhishingAtMidnightApp.swift in Sources */,
 				56F6372BB17568E21B6A0E4B /* ResultsView.swift in Sources */,
+				770C90453B3EA7C2EDA42252 /* HapticsAudioService.swift in Sources */,
 				47E0EB0116370F6F1BBCABC5 /* StartView.swift in Sources */,
 				BD222B7BF4AF8728822C8576 /* EmailInspectorView.swift in Sources */,
 				8B81FBB269BA8F5030E63E3A /* TriageEngine.swift in Sources */,
