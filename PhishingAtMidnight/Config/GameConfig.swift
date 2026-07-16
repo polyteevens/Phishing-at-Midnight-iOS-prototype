@@ -72,4 +72,58 @@ enum GameConfig {
         static let goldMaxMeterValue: Double = 25
         static let silverMaxMeterValue: Double = 60
     }
+
+    enum Combo {
+        /// Consecutive confident-correct calls (Quarantine-on-dangerous or
+        /// Allow-on-legit) needed to reach each multiplier tier. A wrong call
+        /// or a Flag resets the streak to 0 and the multiplier to the base tier.
+        static let tierThresholds: [Int] = [3, 6, 10]
+        /// Multiplier applied to a correct decision's speed bonus at each tier
+        /// — index 0 is the base (no streak yet), then one entry per threshold.
+        static let tierMultipliers: [Double] = [1, 2, 3, 4]
+
+        /// The multiplier for a given streak length.
+        static func multiplier(forStreak streak: Int) -> Double {
+            var tier = 0
+            for threshold in tierThresholds where streak >= threshold {
+                tier += 1
+            }
+            return tierMultipliers[min(tier, tierMultipliers.count - 1)]
+        }
+    }
+
+    enum Tension {
+        /// Breach meter value at which the presentation shifts from Calm to
+        /// Pressure (drone thickens, colors warm).
+        static let pressureThreshold: Double = 30
+        /// Breach meter value at which the presentation shifts to Critical
+        /// (screen edges pulse, heartbeat kicks in, haptics warn hard).
+        static let criticalThreshold: Double = 70
+    }
+
+    enum Juice {
+        /// How long to freeze the tick loop on a big moment (a mistake, or
+        /// crossing into Critical) — the "hit-stop" that makes impact land.
+        static let hitStopDuration: TimeInterval = 0.08
+        /// Screen-shake duration for a mistake beat.
+        static let shakeDuration: TimeInterval = 0.4
+        /// How long a flying "+N" score popup takes to rise and fade.
+        static let scorePopupDuration: TimeInterval = 0.9
+    }
+
+    enum RareEvent {
+        /// Chance a given run gets a coordinated-attack burst at all. Kept
+        /// low on purpose — it's a variable reward, not a regular beat.
+        static let probabilityPerRun: Double = 0.3
+        /// The burst fires somewhere in this fraction-of-mission-duration
+        /// window, so it never opens or closes the run.
+        static let triggerWindow: ClosedRange<Double> = 0.35...0.7
+        /// How many already-pending emails get pulled forward into the burst.
+        static let burstCount: Int = 3
+        /// Spacing between clustered burst arrivals.
+        static let burstArrivalStagger: TimeInterval = 0.5
+        /// Click-timer range forced onto dangerous emails caught in the burst
+        /// — noticeably tighter than even the "hard" range.
+        static let burstClickTimerRange: ClosedRange<Double> = 6...11
+    }
 }
