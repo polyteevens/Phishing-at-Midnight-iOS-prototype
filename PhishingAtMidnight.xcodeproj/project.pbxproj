@@ -13,6 +13,12 @@
 		BD5064D54E9907252264E20E /* Specimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5DEB591464F9ADCEFFC5C /* Specimen.swift */; };
 		E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */; };
 		FD0B9A951ABCA11CAFD91CE3 /* GameFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */; };
+		04462D4252409341589B6C18 /* ComboBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */; };
+		5D0830D2373B0E0E17B4B8C4 /* FlyingScorePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */; };
+		2B853802F1AE1A7517DB284C /* ParticleBurstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */; };
+		46DF70662F337A9D08BF11F1 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */; };
+		19729390D487FC417F252AB1 /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525C629614B7FEB8807A70EC /* StampView.swift */; };
+		4585669FDBFFBE2F605368FE /* TensionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ECE77A8447643D76A109A /* TensionOverlayView.swift */; };
 		4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */; };
 		9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */; };
 		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
@@ -37,6 +43,12 @@
 		56F5DEB591464F9ADCEFFC5C /* Specimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Specimen.swift"; sourceTree = "<group>"; };
 		AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecimenLoader.swift"; sourceTree = "<group>"; };
 		B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameFlowView.swift"; sourceTree = "<group>"; };
+		662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComboBadgeView.swift"; sourceTree = "<group>"; };
+		C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlyingScorePopupView.swift"; sourceTree = "<group>"; };
+		7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleBurstView.swift"; sourceTree = "<group>"; };
+		5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShakeEffect.swift"; sourceTree = "<group>"; };
+		525C629614B7FEB8807A70EC /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StampView.swift"; sourceTree = "<group>"; };
+		D58ECE77A8447643D76A109A /* TensionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TensionOverlayView.swift"; sourceTree = "<group>"; };
 		3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterView.swift"; sourceTree = "<group>"; };
 		E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisruptionMeterView.swift"; sourceTree = "<group>"; };
 		3544A4C03C0F3C9037893E32 /* MeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterBarView.swift"; sourceTree = "<group>"; };
@@ -86,6 +98,19 @@
 				AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */,
 			);
 			path = "Content";
+			sourceTree = "<group>";
+		};
+		5D4F49480EB7D61952A56F96 /* Juice */ = {
+			isa = PBXGroup;
+			children = (
+				662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */,
+				C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */,
+				7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */,
+				5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */,
+				525C629614B7FEB8807A70EC /* StampView.swift */,
+				D58ECE77A8447643D76A109A /* TensionOverlayView.swift */,
+			);
+			path = "Juice";
 			sourceTree = "<group>";
 		};
 		0663F5E7D9DB000022EE2CC6 /* Meters */ = {
@@ -148,6 +173,7 @@
 				5619E268CFFE28118C19FC6A /* Config */,
 				7CA548B1171C9820DE76F119 /* Content */,
 				B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */,
+				5D4F49480EB7D61952A56F96 /* Juice */,
 				0663F5E7D9DB000022EE2CC6 /* Meters */,
 				58E9ADE652AF179ADC513A41 /* Persistence */,
 				81026A9E5A675127FBE96ECE /* PhishingAtMidnightApp.swift */,
@@ -252,6 +278,12 @@
 				BD5064D54E9907252264E20E /* Specimen.swift in Sources */,
 				E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */,
 				FD0B9A951ABCA11CAFD91CE3 /* GameFlowView.swift in Sources */,
+				04462D4252409341589B6C18 /* ComboBadgeView.swift in Sources */,
+				5D0830D2373B0E0E17B4B8C4 /* FlyingScorePopupView.swift in Sources */,
+				2B853802F1AE1A7517DB284C /* ParticleBurstView.swift in Sources */,
+				46DF70662F337A9D08BF11F1 /* ShakeEffect.swift in Sources */,
+				19729390D487FC417F252AB1 /* StampView.swift in Sources */,
+				4585669FDBFFBE2F605368FE /* TensionOverlayView.swift in Sources */,
 				4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */,
 				9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */,
 				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
