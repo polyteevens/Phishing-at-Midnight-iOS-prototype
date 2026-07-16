@@ -14,6 +14,7 @@
 		E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */; };
 		FD0B9A951ABCA11CAFD91CE3 /* GameFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */; };
 		04462D4252409341589B6C18 /* ComboBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */; };
+		27C710B20E617038B87C88DB /* CountUpNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0CB0818402C9B5FBD4F97 /* CountUpNumber.swift */; };
 		5D0830D2373B0E0E17B4B8C4 /* FlyingScorePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */; };
 		2B853802F1AE1A7517DB284C /* ParticleBurstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */; };
 		46DF70662F337A9D08BF11F1 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */; };
@@ -46,6 +47,7 @@
 		AE3D8D716D3D36DF43D39747 /* SpecimenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecimenLoader.swift"; sourceTree = "<group>"; };
 		B7A5CFACCB9CEADEFD93E04C /* GameFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameFlowView.swift"; sourceTree = "<group>"; };
 		662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComboBadgeView.swift"; sourceTree = "<group>"; };
+		1DF0CB0818402C9B5FBD4F97 /* CountUpNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountUpNumber.swift"; sourceTree = "<group>"; };
 		C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlyingScorePopupView.swift"; sourceTree = "<group>"; };
 		7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleBurstView.swift"; sourceTree = "<group>"; };
 		5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShakeEffect.swift"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				662BF82921DCDA90A688A4F4 /* ComboBadgeView.swift */,
+				1DF0CB0818402C9B5FBD4F97 /* CountUpNumber.swift */,
 				C3CBA31BB207F642C2767B73 /* FlyingScorePopupView.swift */,
 				7D1735681DFCE9F213777BFD /* ParticleBurstView.swift */,
 				5DE4F81784AB8368B2F01558 /* ShakeEffect.swift */,
@@ -293,6 +296,7 @@
 				E2E0DC372A6805D849FE23FB /* SpecimenLoader.swift in Sources */,
 				FD0B9A951ABCA11CAFD91CE3 /* GameFlowView.swift in Sources */,
 				04462D4252409341589B6C18 /* ComboBadgeView.swift in Sources */,
+				27C710B20E617038B87C88DB /* CountUpNumber.swift in Sources */,
 				5D0830D2373B0E0E17B4B8C4 /* FlyingScorePopupView.swift in Sources */,
 				2B853802F1AE1A7517DB284C /* ParticleBurstView.swift in Sources */,
 				46DF70662F337A9D08BF11F1 /* ShakeEffect.swift in Sources */,

@@ -9,7 +9,7 @@ struct GameFlowView: View {
     enum Phase: Equatable {
         case briefing
         case triage
-        case results(TriageEngine.RunResult)
+        case results(TriageEngine.RunResult, isNewBestCombo: Bool, isNewBestAccuracy: Bool)
     }
 
     let pool: [Specimen]
@@ -27,14 +27,24 @@ struct GameFlowView: View {
             }
         case .triage:
             TriageView(pool: pool, replayCount: progress.totalReplays) { result in
+                let previousBestCombo = progress.bestCombo
+                let previousBestAccuracy = progress.bestAccuracy
                 progress.recordRun(result)
-                phase = .results(result)
+                phase = .results(
+                    result,
+                    isNewBestCombo: result.bestCombo > previousBestCombo,
+                    isNewBestAccuracy: result.accuracy > previousBestAccuracy
+                )
             }
             .id(runToken)
-        case .results(let result):
+        case .results(let result, let isNewBestCombo, let isNewBestAccuracy):
             ResultsView(
                 result: result,
-                best: progress.bestGrade.map { .init(grade: $0, accuracy: progress.bestAccuracy) },
+                best: progress.bestGrade.map {
+                    .init(grade: $0, accuracy: progress.bestAccuracy, bestCombo: progress.bestCombo)
+                },
+                isNewBestCombo: isNewBestCombo,
+                isNewBestAccuracy: isNewBestAccuracy,
                 onReplay: {
                     runToken += 1
                     phase = .triage
