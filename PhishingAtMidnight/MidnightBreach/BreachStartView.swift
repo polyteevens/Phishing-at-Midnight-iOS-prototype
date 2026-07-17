@@ -5,6 +5,7 @@ import SwiftUI
 /// the first few seconds already look like a real game rather than a menu.
 struct BreachStartView: View {
     @State private var isPlaying = false
+    @State private var quickActions = QuickActionCenter.shared
 
     var body: some View {
         ZStack {
@@ -34,16 +35,24 @@ struct BreachStartView: View {
 
                 Spacer(minLength: 20)
 
-                Button {
-                    isPlaying = true
-                } label: {
-                    Text("Enter System")
-                        .font(.headline)
-                        .frame(maxWidth: 360)
-                        .padding()
-                        .background(Color.accentColor)
-                        .foregroundStyle(.black)
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                VStack(spacing: 14) {
+                    Button {
+                        isPlaying = true
+                    } label: {
+                        Text("Enter System")
+                            .font(.headline)
+                            .frame(maxWidth: 360)
+                            .padding()
+                            .background(Color.accentColor)
+                            .foregroundStyle(.black)
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    }
+
+                    ShareLink(item: BreachShareContent.inviteMessage) {
+                        Label("Invite a Friend", systemImage: "square.and.arrow.up")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                    }
                 }
                 .padding(.bottom, 44)
             }
@@ -54,6 +63,14 @@ struct BreachStartView: View {
                 isPlaying = false
             }
         }
+        .onAppear { presentIfQuickActionPending() }
+        .onChange(of: quickActions.pendingAction) { _, _ in presentIfQuickActionPending() }
+    }
+
+    private func presentIfQuickActionPending() {
+        guard quickActions.pendingAction == .enterSystem, !isPlaying else { return }
+        quickActions.pendingAction = nil
+        isPlaying = true
     }
 }
 

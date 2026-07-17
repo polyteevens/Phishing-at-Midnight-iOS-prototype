@@ -105,6 +105,16 @@ struct BreachResultsView: View {
                                     .foregroundStyle(.black)
                                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                             }
+
+                            ShareLink(item: BreachShareContent.resultMessage(for: result)) {
+                                Label("Share Result", systemImage: "square.and.arrow.up")
+                                    .font(.subheadline.weight(.semibold))
+                                    .frame(maxWidth: 360)
+                                    .padding(.vertical, 10)
+                                    .foregroundStyle(.white)
+                                    .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            }
+
                             Button("Back to Start", action: onExit)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)

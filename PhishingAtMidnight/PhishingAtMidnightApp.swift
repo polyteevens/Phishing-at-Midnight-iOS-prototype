@@ -1,7 +1,10 @@
 import SwiftUI
+import UIKit
 
 @main
 struct PhishingAtMidnightApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
             // Main entry point is the newer "Midnight Breach" mission.

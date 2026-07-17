@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4571ADCF5BA2278A25EBE2AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3430E4BE1844387D22F4B /* AppDelegate.swift */; };
+		E215AC32C9DF1F546CE21C5F /* BreachSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0585AA5F8332FEAF343F356 /* BreachSceneDelegate.swift */; };
+		E29CB82FC4C7ADBB566660F6 /* QuickActionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97078A791200D123BD2EF12 /* QuickActionCenter.swift */; };
 		3D2C53E1A387837041EF26EC /* BriefingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D124978CC1E2FE8390ED69 /* BriefingView.swift */; };
 		FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB04A10B703DB58A907307F /* GameConfig.swift */; };
 		9F9701A1DF153C843482B478 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BB666E338512D9C03B0F86 /* PreviewData.swift */; };
@@ -28,6 +31,7 @@
 		D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D28B4A04CF967794279DAD /* BreachMeterRow.swift */; };
 		43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E17E197C1EE922DF090973 /* BreachModels.swift */; };
 		390A66B591410C741B251D71 /* BreachResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C82BE03D094D7821995CAA /* BreachResultsView.swift */; };
+		AB0FE8FB625EA63FC5F60E81 /* BreachShareContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E568D261652A4A24FB844E7E /* BreachShareContent.swift */; };
 		6ED2E6B4A4E1D4715EB1B96D /* BreachStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937AEA372053A65D3D9E385 /* BreachStartView.swift */; };
 		A6A22569DE1161A3C4C1A0FE /* FirewallCircuitEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */; };
 		98AAE6ADA32496E0C1514D90 /* FirewallCircuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326C4F031419D21FE312530 /* FirewallCircuitView.swift */; };
@@ -53,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		E16D97483743F75E92295108 /* PhishingAtMidnight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishingAtMidnight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02D3430E4BE1844387D22F4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate.swift"; sourceTree = "<group>"; };
+		B0585AA5F8332FEAF343F356 /* BreachSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachSceneDelegate.swift"; sourceTree = "<group>"; };
+		D97078A791200D123BD2EF12 /* QuickActionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickActionCenter.swift"; sourceTree = "<group>"; };
 		CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
 		C2D124978CC1E2FE8390ED69 /* BriefingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BriefingView.swift"; sourceTree = "<group>"; };
 		2FB04A10B703DB58A907307F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameConfig.swift"; sourceTree = "<group>"; };
@@ -75,6 +82,7 @@
 		45D28B4A04CF967794279DAD /* BreachMeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterRow.swift"; sourceTree = "<group>"; };
 		F5E17E197C1EE922DF090973 /* BreachModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachModels.swift"; sourceTree = "<group>"; };
 		43C82BE03D094D7821995CAA /* BreachResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachResultsView.swift"; sourceTree = "<group>"; };
+		E568D261652A4A24FB844E7E /* BreachShareContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachShareContent.swift"; sourceTree = "<group>"; };
 		3937AEA372053A65D3D9E385 /* BreachStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachStartView.swift"; sourceTree = "<group>"; };
 		87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirewallCircuitEngine.swift"; sourceTree = "<group>"; };
 		C326C4F031419D21FE312530 /* FirewallCircuitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirewallCircuitView.swift"; sourceTree = "<group>"; };
@@ -108,6 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA53EBF3BE0CF5EBA82E0BEB /* AppSupport */ = {
+			isa = PBXGroup;
+			children = (
+				02D3430E4BE1844387D22F4B /* AppDelegate.swift */,
+				B0585AA5F8332FEAF343F356 /* BreachSceneDelegate.swift */,
+				D97078A791200D123BD2EF12 /* QuickActionCenter.swift */,
+			);
+			path = "AppSupport";
+			sourceTree = "<group>";
+		};
 		23D3AE5D7562C1E6402687AC /* Briefing */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +184,7 @@
 				45D28B4A04CF967794279DAD /* BreachMeterRow.swift */,
 				F5E17E197C1EE922DF090973 /* BreachModels.swift */,
 				43C82BE03D094D7821995CAA /* BreachResultsView.swift */,
+				E568D261652A4A24FB844E7E /* BreachShareContent.swift */,
 				3937AEA372053A65D3D9E385 /* BreachStartView.swift */,
 				87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */,
 				C326C4F031419D21FE312530 /* FirewallCircuitView.swift */,
@@ -240,6 +259,7 @@
 		0D0822E5013C563F2C1F2528 /* PhishingAtMidnight */ = {
 			isa = PBXGroup;
 			children = (
+				BA53EBF3BE0CF5EBA82E0BEB /* AppSupport */,
 				CFDBAC21689581B04CB7ABB5 /* Assets.xcassets */,
 				23D3AE5D7562C1E6402687AC /* Briefing */,
 				5619E268CFFE28118C19FC6A /* Config */,
@@ -347,6 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4571ADCF5BA2278A25EBE2AA /* AppDelegate.swift in Sources */,
+				E215AC32C9DF1F546CE21C5F /* BreachSceneDelegate.swift in Sources */,
+				E29CB82FC4C7ADBB566660F6 /* QuickActionCenter.swift in Sources */,
 				3D2C53E1A387837041EF26EC /* BriefingView.swift in Sources */,
 				FE1BAFE972ABBA8DA88C7050 /* GameConfig.swift in Sources */,
 				9F9701A1DF153C843482B478 /* PreviewData.swift in Sources */,
@@ -368,6 +391,7 @@
 				D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */,
 				43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */,
 				390A66B591410C741B251D71 /* BreachResultsView.swift in Sources */,
+				AB0FE8FB625EA63FC5F60E81 /* BreachShareContent.swift in Sources */,
 				6ED2E6B4A4E1D4715EB1B96D /* BreachStartView.swift in Sources */,
 				A6A22569DE1161A3C4C1A0FE /* FirewallCircuitEngine.swift in Sources */,
 				98AAE6ADA32496E0C1514D90 /* FirewallCircuitView.swift in Sources */,
