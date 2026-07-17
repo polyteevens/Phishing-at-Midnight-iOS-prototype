@@ -21,19 +21,36 @@ API label, a missing `Self.` qualifier, that kind of thing — since every file
 was hand-checked for brace/paren balance and read through carefully, but none
 of it has ever been run through `swiftc`.
 
+## The app now opens into Midnight Breach, not the email mission
+
+As of this pass, `PhishingAtMidnightApp` opens into `BreachStartView` —
+**MIDNIGHT BREACH**, a cinematic system-map mission — not the original
+email-triage `StartView`. The original mission (email triage: Briefing →
+Triage inbox → Results) is fully intact in the project and still compiles,
+it's just no longer what launches. If you want to get back to it, swap
+`BreachStartView()` for `StartView()` in `PhishingAtMidnightApp.swift`.
+
 ## How to build & run
 
 - Scheme: **PhishingAtMidnight**, target iOS 17.0+.
-- Start screen → **Begin Shift** → Briefing (auto-advances, ~10-15s, or tap
-  **Skip** if you've seen it before) → Triage (the actual game) → Results →
-  **Replay** or **Back to Start**.
+- **Main flow (Midnight Breach):** Start screen ("MIDNIGHT BREACH", with a
+  small animated network preview already running behind the copy) → **Enter
+  System** → System Map (five nodes around a glowing core; red pulses travel
+  inward on threatened nodes) → tap a threatened node to enter its challenge
+  (Packet Intercept / Firewall Circuit / Access Lockdown) → win or lose, back
+  to the map → run ends when Breach hits 100, Stability hits 0, or the
+  mission timer runs out → Results (grade S/A/B/Failed, Cyber Fit Signal,
+  skills tested) → **Replay** or **Back to Start**.
+- **Original flow (email triage):** still reachable by swapping the app's
+  root view as described above — Begin Shift → Briefing → Triage inbox →
+  Results → Replay.
 - On-device testing matters most for `HapticsAudioService` — the Simulator
-  does not render Core Haptics at all, so the rising tension pulse, the
-  heartbeat, every per-decision stinger, and the mission-end/results beats
-  will silently no-op there. Run on a real iPhone (Settings won't matter,
-  just needs the Taptic Engine) to feel any of it. This is where "does it
-  actually feel good" has to be judged — nothing here can be judged from a
-  Preview or a description.
+  does not render Core Haptics at all, so every haptic beat in both missions
+  (tension pulse, heartbeat, per-decision/per-action stingers, mission-end
+  and results beats) will silently no-op there. Run on a real iPhone
+  (Settings won't matter, just needs the Taptic Engine) to feel any of it.
+  This is where "does it actually feel good" has to be judged — nothing here
+  can be judged from a Preview or a description.
 
 ## Tunable numbers — all in [GameConfig.swift](PhishingAtMidnight/Config/GameConfig.swift)
 
@@ -79,6 +96,31 @@ The patient's name, her fate lines per outcome, and Supervisor Morales's
 reactions per grade are copy, not numbers — edit them directly in
 [NarrativeContent.swift](PhishingAtMidnight/Narrative/NarrativeContent.swift).
 
+### Midnight Breach mission
+
+All still in `GameConfig.swift`, clearly separated (MARK comment) from the
+email-triage config above, which these don't touch.
+
+| Knob | Current value | What it does |
+|---|---|---|
+| `Breach.missionDuration` | 100s | Total run length |
+| `Breach.initialThreatDelayRange` / `threatCooldownRange` | 3–7s / 4–9s | Delay before a node's first threat, and before it can be threatened again after being resolved |
+| `Breach.pulseTravelDuration` | 9s | How long an unaddressed pulse takes to reach the core from a node |
+| `Breach.breachIncrementOnCoreHit` / `breachIncrementOnChallengeFail` | 18 / 12 | Breach gain when a pulse reaches the core vs. when a challenge is failed outright |
+| `Breach.stabilityDamagePerMistake` | 12 | Stability lost per in-challenge mistake, felt immediately (not just at challenge end) |
+| `Breach.gradeSMaxBreach` / `gradeSMinStability` / `gradeAMaxBreach` / `gradeAMinStability` | 20 / 80 / 50 / 55 | Cutoffs for grade S vs A vs B, checked against final Breach/Stability |
+| `PacketIntercept.challengeDuration` | 11s | Length of one Packet Intercept attempt |
+| `PacketIntercept.packetSpeedRange` / `spawnIntervalRange` | 0.10–0.22 screen-widths/s / 0.6–1.1s | How fast packets cross, how often they spawn |
+| `PacketIntercept.maliciousRatio` / `maxMistakesAllowed` | 0.55 / 2 | Odds a spawned packet is malicious; how many mistakes still counts as a pass |
+| `FirewallCircuit.tileCount` / `timeLimit` | 5 / 10s | How many tiles need aligning, and the clock to do it in |
+| `AccessLockdown.sequenceLengthRange` / `tileCount` / `revealIntervalPerTile` | 4–6 / 6 / 0.45s | Pattern length, grid size, and playback speed of the sequence |
+
+The five nodes' fixed challenge assignments (Identity/Access Gate → Access
+Lockdown, Records/Life System → Packet Intercept, Firewall Core → Firewall
+Circuit) live in `BreachNodeKind.challengeKind` in
+[BreachModels.swift](PhishingAtMidnight/MidnightBreach/BreachModels.swift) —
+that's a design choice, not a tunable number, so it's not in GameConfig.
+
 ## Known gaps / things left for you
 
 - **No audio assets ship yet.** `HapticsAudioService` looks up every sound by
@@ -116,6 +158,25 @@ reactions per grade are copy, not numbers — edit them directly in
   (add files via the Project Navigator) — Xcode will maintain the project
   file correctly from that point on. You should never need the generator
   again.
+- **Midnight Breach has no cross-session persistence.** Unlike the email
+  mission (which uses `GameProgressStore`), a Midnight Breach run's grade/
+  best-combo/etc. isn't saved anywhere — Replay only resets the in-memory
+  engine. There's no "Best:" line on its Results screen. Add a
+  `BreachProgressStore` mirroring `GameProgressStore` if you want that.
+- **Midnight Breach audio/haptics reuse the email mission's SFX names**
+  (`sfx_correct`, `sfx_mistake`, `sfx_result_success`, `sfx_result_fail`) via
+  the new `HapticsAudioService.playImpactBeat(isPositive:)` — so dropping in
+  those asset files benefits both missions at once. No Midnight-Breach-
+  specific sound names exist yet.
+- **Midnight Breach balance is a first guess, not a tuned pass.** Unlike the
+  email mission (which already got one feel-tuning round), these numbers
+  have never been played. Expect the three challenges' difficulty relative
+  to each other to be uneven at first — see open questions below.
+- **The three challenges only get shake/flash/particle juice, not the fuller
+  hit-stop/combo/tension-state treatment** the email mission has. They reuse
+  `ShakeEffect` and `ParticleBurstView` directly but don't have their own
+  combo streak or tension-state system — Breach/Stability meters are the
+  only "mood" signal on the map screen itself.
 
 ## Open questions for you to decide once it's playable
 
@@ -137,3 +198,25 @@ reactions per grade are copy, not numbers — edit them directly in
 - The hit-stop is currently one fixed tick (~100ms) regardless of how big the
   moment is — a real mistake and crossing into Critical both freeze for the
   same length. Worth differentiating once it's felt on-device.
+
+### Midnight Breach — untested balance questions
+
+- Is a 100-second mission the right length for "try it once, want to replay
+  immediately"? It needs to be short enough that losing doesn't feel like a
+  big time cost.
+- The three challenges were designed to feel roughly comparable in
+  difficulty, but they've never been played against each other. Likely
+  candidates for feeling too easy/hard relative to the others:
+  Access Lockdown's instant-fail-on-first-wrong-tap is much harsher than
+  Packet Intercept's "a couple of mistakes is still fine."
+- `pulseTravelDuration` (9s) is how long a player has to *notice* a
+  threatened node and decide to engage it, on top of however long the
+  challenge itself takes — if players keep getting caught off guard, this
+  is the first knob to raise.
+- Does tapping a threatened node feel responsive, or does the map feel too
+  passive between challenges? There's currently nothing to do on the map
+  screen except watch and wait for a node to light up.
+- The five nodes' challenge-type assignments (two nodes each funnel into
+  Access Lockdown and Packet Intercept, only one into Firewall Circuit) may
+  make Firewall Circuit feel rare/special or just inconsistent — worth
+  deciding which.
