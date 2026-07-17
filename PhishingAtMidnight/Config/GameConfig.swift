@@ -126,4 +126,62 @@ enum GameConfig {
         /// — noticeably tighter than even the "hard" range.
         static let burstClickTimerRange: ClosedRange<Double> = 6...11
     }
+
+    // MARK: - Midnight Breach mission
+    // Everything below tunes the newer "system map + visual challenges"
+    // mission. The email-triage config above is unchanged and still used by
+    // the original Phishing at Midnight mission, which remains in the
+    // project but is no longer the app's main entry point.
+
+    enum Breach {
+        /// Total length of a Midnight Breach run, in seconds.
+        static let missionDuration: TimeInterval = 100
+        /// Delay before a node's very first threat after the mission starts.
+        static let initialThreatDelayRange: ClosedRange<Double> = 3...7
+        /// Delay before a node can be threatened again after being resolved
+        /// (secured or failed).
+        static let threatCooldownRange: ClosedRange<Double> = 4...9
+        /// How long an unaddressed attack pulse takes to travel from a node
+        /// to the core.
+        static let pulseTravelDuration: TimeInterval = 9
+        /// Breach meter gain when a pulse reaches the core unaddressed.
+        static let breachIncrementOnCoreHit: Double = 18
+        /// Breach meter gain when a player enters a challenge but fails it.
+        static let breachIncrementOnChallengeFail: Double = 12
+        /// Stability meter loss per mistake made *inside* a challenge
+        /// (wrong tap, wrong packet call, etc.) — felt immediately, not just
+        /// at challenge end.
+        static let stabilityDamagePerMistake: Double = 12
+        static let stabilityFailThreshold: Double = 0
+        static let breachFailThreshold: Double = 100
+
+        /// Grade cutoffs, checked against final Breach/Stability when the
+        /// run ends without an outright failure.
+        static let gradeSMaxBreach: Double = 20
+        static let gradeSMinStability: Double = 80
+        static let gradeAMaxBreach: Double = 50
+        static let gradeAMinStability: Double = 55
+    }
+
+    enum PacketIntercept {
+        static let challengeDuration: TimeInterval = 11
+        /// Screen-widths per second a packet travels.
+        static let packetSpeedRange: ClosedRange<Double> = 0.10...0.22
+        static let spawnIntervalRange: ClosedRange<Double> = 0.6...1.1
+        static let maliciousRatio: Double = 0.55
+        static let maxMistakesAllowed: Int = 2
+        static let laneCount: Int = 4
+    }
+
+    enum FirewallCircuit {
+        static let tileCount: Int = 5
+        static let timeLimit: TimeInterval = 10
+    }
+
+    enum AccessLockdown {
+        static let sequenceLengthRange: ClosedRange<Int> = 4...6
+        static let tileCount: Int = 6
+        /// Time each tile in the sequence stays lit during playback.
+        static let revealIntervalPerTile: TimeInterval = 0.45
+    }
 }

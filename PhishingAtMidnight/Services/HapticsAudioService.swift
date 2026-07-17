@@ -295,6 +295,19 @@ final class HapticsAudioService: NSObject {
         } catch {}
     }
 
+    /// Generic success/failure beat for missions that don't share
+    /// TriageEngine's Grade/Outcome types (e.g. Midnight Breach) — same
+    /// underlying patterns, no cross-mission coupling.
+    func playImpactBeat(isPositive: Bool) {
+        playSFX(isPositive ? "sfx_result_success" : "sfx_result_fail")
+        guard isHapticsAvailable, let engine else { return }
+        do {
+            let pattern = isPositive ? try Self.successBeat() : try Self.failureBeat()
+            let player = try engine.makePlayer(with: pattern)
+            try player.start(atTime: CHHapticTimeImmediate)
+        } catch {}
+    }
+
     private static func successBeat() throws -> CHHapticPattern {
         let first = CHHapticEvent(
             eventType: .hapticTransient,
