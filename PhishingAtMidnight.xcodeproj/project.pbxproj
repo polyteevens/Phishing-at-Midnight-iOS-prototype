@@ -23,8 +23,10 @@
 		4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */; };
 		9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */; };
 		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
+		D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D28B4A04CF967794279DAD /* BreachMeterRow.swift */; };
 		43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E17E197C1EE922DF090973 /* BreachModels.swift */; };
 		9F2D3A119517C89F27CD925F /* SystemMapEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */; };
+		C7EEA035615A91F0CE91DBC1 /* SystemMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A018637D5567F4739A6F02AD /* SystemMapView.swift */; };
 		6019280E6B7EA5866CF46ABC /* NarrativeContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37777611501FA20CDA9BA13 /* NarrativeContent.swift */; };
 		6EBABD5391E2CCDFD858B433 /* PatientPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD631E0B88EBB80C95B5C467 /* PatientPortraitView.swift */; };
 		E6005E5BEE26555B1BDFD5CB /* GameProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FA238B7C863A5EBAE9E0C /* GameProgressStore.swift */; };
@@ -59,8 +61,10 @@
 		3D4741B0438E2FCB849DFA94 /* BreachMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterView.swift"; sourceTree = "<group>"; };
 		E019FA2EA82FFE3468E20751 /* DisruptionMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisruptionMeterView.swift"; sourceTree = "<group>"; };
 		3544A4C03C0F3C9037893E32 /* MeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterBarView.swift"; sourceTree = "<group>"; };
+		45D28B4A04CF967794279DAD /* BreachMeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterRow.swift"; sourceTree = "<group>"; };
 		F5E17E197C1EE922DF090973 /* BreachModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachModels.swift"; sourceTree = "<group>"; };
 		6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemMapEngine.swift"; sourceTree = "<group>"; };
+		A018637D5567F4739A6F02AD /* SystemMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemMapView.swift"; sourceTree = "<group>"; };
 		C37777611501FA20CDA9BA13 /* NarrativeContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NarrativeContent.swift"; sourceTree = "<group>"; };
 		BD631E0B88EBB80C95B5C467 /* PatientPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientPortraitView.swift"; sourceTree = "<group>"; };
 		573FA238B7C863A5EBAE9E0C /* GameProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameProgressStore.swift"; sourceTree = "<group>"; };
@@ -139,8 +143,10 @@
 		BDCE52200E351B1878632BAE /* MidnightBreach */ = {
 			isa = PBXGroup;
 			children = (
+				45D28B4A04CF967794279DAD /* BreachMeterRow.swift */,
 				F5E17E197C1EE922DF090973 /* BreachModels.swift */,
 				6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */,
+				A018637D5567F4739A6F02AD /* SystemMapView.swift */,
 			);
 			path = "MidnightBreach";
 			sourceTree = "<group>";
@@ -330,8 +336,10 @@
 				4F231CF3537107B3CB4D3DD0 /* BreachMeterView.swift in Sources */,
 				9FE4059AB222BA9473DB1E5A /* DisruptionMeterView.swift in Sources */,
 				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
+				D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */,
 				43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */,
 				9F2D3A119517C89F27CD925F /* SystemMapEngine.swift in Sources */,
+				C7EEA035615A91F0CE91DBC1 /* SystemMapView.swift in Sources */,
 				6019280E6B7EA5866CF46ABC /* NarrativeContent.swift in Sources */,
 				6EBABD5391E2CCDFD858B433 /* PatientPortraitView.swift in Sources */,
 				E6005E5BEE26555B1BDFD5CB /* GameProgressStore.swift in Sources */,
