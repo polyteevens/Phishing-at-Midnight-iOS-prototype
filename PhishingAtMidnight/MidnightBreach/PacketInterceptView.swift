@@ -6,6 +6,7 @@ import SwiftUI
 /// haptic tap; a mistake flashes red and shakes the screen.
 struct PacketInterceptView: View {
     let node: BreachNodeKind
+    let onMistake: () -> Void
     let onComplete: (Bool) -> Void
 
     @State private var engine = PacketInterceptEngine()
@@ -101,6 +102,7 @@ struct PacketInterceptView: View {
     }
 
     private func fireMistakeJuice() {
+        onMistake()
         haptics.playMistake()
         shakeTrigger += 1
         withAnimation(.easeIn(duration: 0.05)) { flashOpacity = 0.28 }
@@ -109,6 +111,6 @@ struct PacketInterceptView: View {
 }
 
 #Preview {
-    PacketInterceptView(node: .records, onComplete: { _ in })
+    PacketInterceptView(node: .records, onMistake: {}, onComplete: { _ in })
         .preferredColorScheme(.dark)
 }

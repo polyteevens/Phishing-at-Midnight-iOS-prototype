@@ -6,6 +6,7 @@ import SwiftUI
 /// and shakes the screen.
 struct FirewallCircuitView: View {
     let node: BreachNodeKind
+    let onMistake: () -> Void
     let onComplete: (Bool) -> Void
 
     @State private var engine = FirewallCircuitEngine()
@@ -70,6 +71,7 @@ struct FirewallCircuitView: View {
                         burstEvents.removeAll { $0 == burstID }
                     }
                 } else {
+                    onMistake()
                     haptics.playMistake()
                     shakeTrigger += 1
                 }
@@ -111,6 +113,6 @@ private struct CircuitTileView: View {
 }
 
 #Preview {
-    FirewallCircuitView(node: .firewallCore, onComplete: { _ in })
+    FirewallCircuitView(node: .firewallCore, onMistake: {}, onComplete: { _ in })
         .preferredColorScheme(.dark)
 }

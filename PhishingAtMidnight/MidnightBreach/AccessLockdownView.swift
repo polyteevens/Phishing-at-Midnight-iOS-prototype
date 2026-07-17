@@ -5,6 +5,7 @@ import SwiftUI
 /// this is meant to be read with the eyes, not with words.
 struct AccessLockdownView: View {
     let node: BreachNodeKind
+    let onMistake: () -> Void
     let onComplete: (Bool) -> Void
 
     @State private var engine = AccessLockdownEngine()
@@ -63,6 +64,7 @@ struct AccessLockdownView: View {
         .shake(trigger: shakeTrigger)
         .onAppear {
             engine.onWrongTap = {
+                onMistake()
                 haptics.playMistake()
                 shakeTrigger += 1
             }
@@ -86,6 +88,6 @@ struct AccessLockdownView: View {
 }
 
 #Preview {
-    AccessLockdownView(node: .identity, onComplete: { _ in })
+    AccessLockdownView(node: .identity, onMistake: {}, onComplete: { _ in })
         .preferredColorScheme(.dark)
 }
