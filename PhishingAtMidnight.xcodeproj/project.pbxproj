@@ -25,6 +25,8 @@
 		F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544A4C03C0F3C9037893E32 /* MeterBarView.swift */; };
 		D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D28B4A04CF967794279DAD /* BreachMeterRow.swift */; };
 		43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E17E197C1EE922DF090973 /* BreachModels.swift */; };
+		A6A22569DE1161A3C4C1A0FE /* FirewallCircuitEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */; };
+		98AAE6ADA32496E0C1514D90 /* FirewallCircuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326C4F031419D21FE312530 /* FirewallCircuitView.swift */; };
 		7A46156D7FBDD79AD59EF9BD /* PacketInterceptEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AE07EC0376D9C14D18B9C6 /* PacketInterceptEngine.swift */; };
 		094699394A913295A8BF4F70 /* PacketInterceptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93374FA79DC08864943496CB /* PacketInterceptView.swift */; };
 		9F2D3A119517C89F27CD925F /* SystemMapEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */; };
@@ -65,6 +67,8 @@
 		3544A4C03C0F3C9037893E32 /* MeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterBarView.swift"; sourceTree = "<group>"; };
 		45D28B4A04CF967794279DAD /* BreachMeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachMeterRow.swift"; sourceTree = "<group>"; };
 		F5E17E197C1EE922DF090973 /* BreachModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BreachModels.swift"; sourceTree = "<group>"; };
+		87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirewallCircuitEngine.swift"; sourceTree = "<group>"; };
+		C326C4F031419D21FE312530 /* FirewallCircuitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirewallCircuitView.swift"; sourceTree = "<group>"; };
 		43AE07EC0376D9C14D18B9C6 /* PacketInterceptEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PacketInterceptEngine.swift"; sourceTree = "<group>"; };
 		93374FA79DC08864943496CB /* PacketInterceptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PacketInterceptView.swift"; sourceTree = "<group>"; };
 		6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemMapEngine.swift"; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 			children = (
 				45D28B4A04CF967794279DAD /* BreachMeterRow.swift */,
 				F5E17E197C1EE922DF090973 /* BreachModels.swift */,
+				87F328FC8DA09205BFF59794 /* FirewallCircuitEngine.swift */,
+				C326C4F031419D21FE312530 /* FirewallCircuitView.swift */,
 				43AE07EC0376D9C14D18B9C6 /* PacketInterceptEngine.swift */,
 				93374FA79DC08864943496CB /* PacketInterceptView.swift */,
 				6FADC67F396E9B6A9B422E44 /* SystemMapEngine.swift */,
@@ -344,6 +350,8 @@
 				F18515BAA208DDDCCC0B4F79 /* MeterBarView.swift in Sources */,
 				D83DBBE422CA585FE4929A6C /* BreachMeterRow.swift in Sources */,
 				43D13AF2ACF0420DEB1BEF1C /* BreachModels.swift in Sources */,
+				A6A22569DE1161A3C4C1A0FE /* FirewallCircuitEngine.swift in Sources */,
+				98AAE6ADA32496E0C1514D90 /* FirewallCircuitView.swift in Sources */,
 				7A46156D7FBDD79AD59EF9BD /* PacketInterceptEngine.swift in Sources */,
 				094699394A913295A8BF4F70 /* PacketInterceptView.swift in Sources */,
 				9F2D3A119517C89F27CD925F /* SystemMapEngine.swift in Sources */,
